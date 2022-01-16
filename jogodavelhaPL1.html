@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>Jogo da Velha</title>
+<script language="javascript">
+    var vez = "X";
+    
+    var posicao = new Array
+
+    var velha = new Array
+    velha[0] = "a"
+    velha[1] = "b"
+    velha[2] = "c"
+    velha[3] = "d"
+    velha[4] = "e"
+    velha[5] = "f"
+    velha[6] = "g"
+    velha[7] = "h"
+    velha[8] = "i"
+
+    function acao(posicao) {
+
+        document.getElementById(posicao).innerHTML = vez;
+        velha[posicao] = vez  
+        var win;     
+        if (
+            (velha[0] == velha[1] && velha[0] == velha[2]) ||
+            (velha[3] == velha[4] && velha[3] == velha[5]) ||
+            (velha[6] == velha[7] && velha[6] == velha[8]) ||
+
+            (velha[0] == velha[3] && velha[0] == velha[6]) ||
+            (velha[1] == velha[4] && velha[1] == velha[7]) ||
+            (velha[2] == velha[5] && velha[2] == velha[8]) ||
+
+            (velha[0] == velha[4] && velha[0] == velha[8]) ||
+            (velha[2] == velha[4] && velha[2] == velha[6])
+            ){
+            window.alert("JOGADOR DO '"+ vez + "' GANHOU!!!");
+            win = "boua"
+        }
+
+            if (vez == "X") {
+                vez = "O"
+            }
+            else{
+                vez = "X"
+            }
+            if(win != "boua"){
+            if (velha[0] != "a" && velha[1] != "b" && velha[2] != "c" && velha[3] != "d" && velha[4] != "e"
+                 && velha[5] != "f" && velha[6] != "g" && velha[7] != "h" && velha[8] != "i") {
+                     
+                    window.alert("DEU VELHA");
+                    
+                    atualizar()
+            }
+            }
+    }
+
+    function atualizar() {
+        window.location.reload();
+    }
+</script>
+</head>
+<body>
+
+
+    <form name="frm" align="center">
+
+        <script language="javascript">
+            document.writeln("<table border='1' align='center'>")
+
+            for(var i = 0; i <= 8; i++){
+            posicao[i] = "<input type='button' value='' onclick='acao("+ i +")'/>"
+            document.writeln("<td align='center' width='50' height='50' id='"+ i +"'>" + posicao[i] + "</td>")
+            if (i == 2 || i == 5) {
+                document.writeln("</tr><tr>")    
+            }
+            }
+        </script>
+
+<input type="button" value="reiniciar" onClick="atualizar()">
+    </tr>
+</table>
+</form>
+</body>
+</html>
